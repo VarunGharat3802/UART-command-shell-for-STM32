@@ -26,9 +26,9 @@ Both support DMA, hardware flow control, and SPI emulation mode
 Log Message Queue
 
 
-| Main Application | |
+| | Main Application | |
 | --- | --- |
 | **CMD Parser Task Priority: High** | **Logger Task Priority: Low** |
 | USART1 RX (DMA or interrupt) &rarr; ring buffer &rarr; parse | Waits on `xQueueReceive()` Formats & sends via USART1/2 TX |
-| **xQueueSend()** | |
+| | **xQueueSend()** | |
 
