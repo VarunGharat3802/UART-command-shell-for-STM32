@@ -24,16 +24,16 @@ Both support DMA, hardware flow control, and SPI emulation mode
 
 # FreeRTOS Task Design
 Log Message Queue
-┌─────────────────────────────────────────────────────┐
+
 │                   Main Application                  │
-├──────────────────────┬──────────────────────────────┤
+|------------------------------------------------------|
 │   CMD Parser Task    │      Logger Task              │
 │   Priority: High     │      Priority: Low            │
 │                      │                               │
 │  USART1 RX (DMA or  │   Waits on xQueueReceive()   │
 │  interrupt) → ring  │   Formats & sends via         │
 │  buffer → parse     │   USART1/2 TX                 │
-└──────────┬───────────┴──────────────┬────────────────┘
+|------------------------------------------------------|
            │  xQueueSend()            │
-           └──────────────────────────┘
+           |--------------------------|
                   Log Message Queue
